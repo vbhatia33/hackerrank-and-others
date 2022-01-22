@@ -1,0 +1,6 @@
+// This is a recursive solution for deletion of node(it just skips the node not free the space)
+Node Delete(Node head, int position) {
+    if (position == 0){ return head.next; }
+    head.next = Delete(head.next, position-1);
+    return head;
+}
