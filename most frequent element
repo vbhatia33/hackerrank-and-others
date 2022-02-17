@@ -1,0 +1,30 @@
+0(nlogn +n) solutionm
+class Pair{
+  public:
+    int ans;
+    int count;
+};
+
+Pair mostfrequent(int arr[],int n){
+    sort(arr,arr+n);
+    int ans=arr[0];
+    int count=0;
+    int i=0;
+    Pair answer;
+    
+    while(i<n){
+        int currcnt=0;
+        int currele=arr[i];
+        while(arr[i]==currele){
+            currcnt++;
+            i++;
+        }
+        if(currcnt>count){
+            count=currcnt;
+            ans=currele;
+        }
+    }
+    answer.ans=ans;
+    answer.count=count;
+    return answer;
+}
