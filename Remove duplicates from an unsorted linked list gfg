@@ -1,0 +1,20 @@
+        if(!head || !head->next)    return head;
+        //Node sentil=new Node(0,head);
+       // Node *prev=sentil;
+        Node *temp=head->next;
+        Node *tail=head;
+        tail->next=NULL;
+        unordered_map<int,Node*>m;
+        m[tail->data]=tail;
+        while(temp){
+            if(m.count(temp->data)){
+                tail->next=NULL;
+                temp=temp->next;
+            }
+            else{
+                tail->next=temp;
+                tail=tail->next;
+                m[tail->data]=tail;
+                temp=temp->next;
+            }
+        }
