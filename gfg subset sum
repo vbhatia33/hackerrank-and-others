@@ -12,3 +12,22 @@
         sort(ans.begin(),ans.end());
         return ans;
     }
+
+
+//recursive sol
+   void helper(vector<int>&arr,int N,vector<int>&ans,int ind,int sum){
+            ans.push_back(sum);
+            
+        for(int i=ind;i<N;i++){
+            sum+=arr[i];
+            helper(arr,N,ans,i+1,sum);
+            sum-=arr[i];
+        }
+        return;
+    }
+    vector<int> subsetSums(vector<int> arr, int N)
+    {   vector<int>ans;
+        helper(arr,N,ans,0,0);
+        sort(ans.begin(),ans.end());
+        return ans;
+    }
