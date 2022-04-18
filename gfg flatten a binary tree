@@ -1,0 +1,19 @@
+    void flatten(Node *root){
+        Node *curr=root;
+        Node *prev;
+        while(curr){
+            if(curr->left){
+                prev=curr->left;
+                while(prev->right){
+                    prev=prev->right;
+                }
+                if(prev->right==NULL){
+                    prev->right=curr->right;
+                    curr->right=curr->left;
+                    curr->left=NULL;
+                    curr=curr->right;
+                }
+            }
+            else curr=curr->right;
+        }
+    }
