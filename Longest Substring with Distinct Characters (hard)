@@ -1,0 +1,23 @@
+qslink - https://www.educative.io/courses/grokking-the-coding-interview/7D5NNZWQ8Wr
+
+class NoRepeatSubstring {
+ public:
+  static int findLength(const string& str) {
+    int maxLength = 1;
+    int start=0,end=1;
+    int val[225]={0}; // value array to store count
+    val[str[0]]=1;
+
+    for(;end<str.length();end++){
+      char curr=str[end];  // current element which is considered
+
+      while(val[curr]>0){  //if element is already present in value array
+        val[str[start]]--;   
+        start++;
+      }
+        val[curr]++;  
+        maxLength=max(maxLength,end+1-start);
+    }
+    return maxLength;
+  }
+};
