@@ -1,0 +1,28 @@
+//THis is the solnn of a question to find length of longest subarray having wiggle difference (arr[i+1]-arr[i]) ie pos neg pos neg Ex- 
+// [1,5,4,3,5,2,9]--- >[4,3,5,2,9]
+class Solution {
+public:
+    int wiggleMaxLength(vector<int>& nums) {
+        if(nums.size()==0)  return 1;
+        int start=0;
+        // positive =true
+        //negative = false
+        int ans=2;
+        bool wig=nums[1]>nums[0];
+        for(int end=2;end<nums.size();end++){
+            bool curr_wig=nums[end]>nums[end-1];
+            
+            if(curr_wig==wig){
+                while(start<end-1) start++;
+                wig=nums[end]>nums[end-1];
+            }
+            else{
+                wig=curr_wig;
+            }
+            ans=max(ans,end-start+1);
+        }
+        return ans;
+        
+        
+    }
+};
