@@ -1,0 +1,31 @@
+// sum and sq of sum solution failed at test cse 100
+   int *findTwoElement(int *arr, int n) {
+        // code here
+        int miss,rep;
+        long long n_sum=0;
+        n_sum=n*(n+1)/2;
+        long long act_n_sum=0;
+        for(int i=0;i<n;i++){
+            act_n_sum+=arr[i];
+        }
+        long long miss_rep=abs(n_sum-act_n_sum);
+        long long n_sq_sum=n*(n+1)*(2*n+1)/6;
+        long long act_n_sq_sum=0;
+        for(int i=0;i<n;i++){
+            act_n_sq_sum+=(arr[i]*arr[i]);
+        }
+        cout<<act_n_sq_sum<<endl;
+        long long miss_add_rep=(abs(n_sq_sum-act_n_sq_sum))/miss_rep;
+        miss=(miss_add_rep+miss_rep)/2;
+        rep=miss_add_rep-miss;
+        int *ans=new int(2);
+        if(n_sum>act_n_sum){
+            ans[0]=rep<miss?rep:miss;
+            ans[1]=miss_add_rep-ans[0];
+            return ans;
+        }
+        ans[0]=rep>miss?rep:miss;
+        ans[1]=miss_add_rep-ans[0];
+        return ans;
+        
+    }
