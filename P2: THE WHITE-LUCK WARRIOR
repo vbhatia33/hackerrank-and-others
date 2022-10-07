@@ -1,0 +1,45 @@
+
+You are given two rectangles and you must find the area of the smallest square that contains these two rectangles within it.
+
+(x11,y11) represents the coordinates of the lower-left corner of the first rectangle and (x12,y12) represents its upper-right corner.
+
+Similarly, (x21,y21) represents the coordinates of the lower-left corner of the second rectangle and (x22,y22) represents its upper-right corner.
+
+Input
+x11 y11 x12 y12 on the first line in that order.
+
+x21 y21 x22 y22 on the second line in that order.
+
+Constraints
+0≤x11≤x12≤10
+0≤y11≤y12≤10
+0≤x21≤x22≤10
+0≤y21≤y22≤10
+Output
+One integer --- the area of the smallest square that contains both the rectangles.
+
+Example 1
+Input
+6 6 8 8
+1 8 4 9
+Output
+49
+
+
+solution
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int x11,y11,x12,y12,x21,y21,x22,y22;
+	cin>>x11>>y11>>x12>>y12>>x21>>y21>>x22>>y22;
+	
+	int min_x=min(x11,x21);
+	int max_x=max(x12,x22);
+	int min_y=min(y11,y21);
+	int max_y=max(y12,y22);
+	int x=abs(max_x-min_x);
+	int y=abs(max_y-min_y);
+	int len=max(x,y);
+	cout<<len*len<<endl;
+}
